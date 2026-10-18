@@ -12,7 +12,7 @@ This repository packages the existing app with Docker so it can be run from a fr
 
 
 
-2\. PREREQUISITES
+2\. PREREQ
 
 \- Docker Desktop (running) and Docker Compose
 
