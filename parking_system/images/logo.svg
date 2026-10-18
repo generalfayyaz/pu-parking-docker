@@ -1,0 +1,20 @@
+<svg width="100%" viewBox="0 0 680 260" role="img" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="shieldClip">
+      <path d="M100 40 L180 40 L180 140 Q140 175 100 195 Q60 175 60 140 Z"/>
+    </clipPath>
+  </defs>
+  <path d="M100 40 L180 40 L180 140 Q140 175 100 195 Q60 175 60 140 Z" fill="#1a56db"/>
+  <path d="M100 52 L168 52 L168 138 Q132 165 100 183 Q68 165 68 138 Z" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+  <text x="100" y="140" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-size="88" font-weight="700" fill="white" opacity="0.95">P</text>
+  <g clip-path="url(#shieldClip)">
+    <rect x="72" y="170" width="56" height="16" rx="3" fill="rgba(255,255,255,0.22)"/>
+    <rect x="78" y="162" width="44" height="12" rx="3" fill="rgba(255,255,255,0.18)"/>
+    <circle cx="82" cy="186" r="5" fill="rgba(255,255,255,0.3)"/>
+    <circle cx="118" cy="186" r="5" fill="rgba(255,255,255,0.3)"/>
+  </g>
+  <text x="205" y="108" font-family="Outfit,system-ui,sans-serif" font-size="58" font-weight="700" fill="#1a56db">PU</text>
+  <text x="205" y="160" font-family="Outfit,system-ui,sans-serif" font-size="48" font-weight="600" fill="#1e293b">Parking</text>
+  <text x="207" y="188" font-family="Outfit,system-ui,sans-serif" font-size="15" font-weight="400" fill="#64748b" letter-spacing="2">MANAGEMENT SYSTEM</text>
+  <rect x="205" y="118" width="180" height="3" rx="2" fill="#1a56db" opacity="0.25"/>
+</svg>
