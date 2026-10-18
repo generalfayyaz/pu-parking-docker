@@ -90,7 +90,7 @@ The first build downloads images and can take several minutes.
 
 1\. Run docker compose ps. The app and db services should be running and healthy.
 
-2\. Open http://localhost:8080/parking\_system/ in a browser. The login page should appear.
+2\. Open http://localhost:8080/parking_system/ in a browser. The login page should appear.
 
 3\. Log in with admin / admin123 (demo user from parking\_db\_complete.sql). Check a vehicle in and out. The dashboard and slot status should update.
 
