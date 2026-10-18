@@ -78,7 +78,7 @@ The first build downloads images and can take several minutes.
 
 6\. URL AND PORTS
 
-\- App URL: http://localhost:8080/parking\_system/
+\- App URL: http://localhost:8080/parking_system/
 
 \- Host port 8080 maps to container port 80 (app)
 
