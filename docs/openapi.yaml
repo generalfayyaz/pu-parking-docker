@@ -1,0 +1,160 @@
+openapi: 3.0.0
+info:
+  title: PU Parking Management System API
+  description: API Documentation for President University Parking Management System.
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/presidentuniversity-e74/PUParking/1.0.0
+  description: SwaggerHub API Auto Mocking
+- url: http://localhost:8080/parking_system
+  description: Docker Local Server
+tags:
+- name: Auth
+  description: User authentication operations
+- name: Vehicles
+  description: Vehicle registration and management
+- name: Parking
+  description: Check-in and Check-out parking operations
+- name: Reports
+  description: Parking history and report generation
+paths:
+  /auth/login.php:
+    post:
+      tags:
+      - Auth
+      summary: User Login
+      description: Authenticate user using username and password.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+              - password
+              - username
+              type: object
+              properties:
+                username:
+                  type: string
+                  example: admin
+                password:
+                  type: string
+                  example: password123
+        required: true
+      responses:
+        "200":
+          description: "Login successful, session created"
+        "401":
+          description: Invalid username or password
+  /auth/logout.php:
+    get:
+      tags:
+      - Auth
+      summary: User Logout
+      description: Terminate active session.
+      responses:
+        "200":
+          description: Successfully logged out
+  /pages/add_vehicle.php:
+    post:
+      tags:
+      - Vehicles
+      summary: Add New Vehicle
+      description: Register a new vehicle in the database.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+              - license_plate
+              - vehicle_type
+              type: object
+              properties:
+                license_plate:
+                  type: string
+                  example: B 1234 XYZ
+                owner_name:
+                  type: string
+                  example: Mario Gabriel
+                vehicle_type:
+                  type: string
+                  example: Mobil
+        required: true
+      responses:
+        "201":
+          description: Vehicle registered successfully
+        "400":
+          description: Duplicate license plate or missing data
+  /pages/vehicles.php:
+    get:
+      tags:
+      - Vehicles
+      summary: Get Vehicles List
+      responses:
+        "200":
+          description: List of registered vehicles returned successfully
+  /pages/checkin.php:
+    post:
+      tags:
+      - Parking
+      summary: Check-in Vehicle
+      description: Record vehicle entrance timestamp into parking lot.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+              - license_plate
+              type: object
+              properties:
+                license_plate:
+                  type: string
+                  example: B 1234 XYZ
+                parking_slot:
+                  type: string
+                  example: A-12
+        required: true
+      responses:
+        "200":
+          description: Vehicle checked in successfully
+        "400":
+          description: Vehicle is already checked in
+  /pages/checkout.php:
+    post:
+      tags:
+      - Parking
+      summary: Check-out Vehicle & Calculate Fee
+      description: Record vehicle exit time and compute total charge.
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              required:
+              - license_plate
+              type: object
+              properties:
+                license_plate:
+                  type: string
+                  example: B 1234 XYZ
+        required: true
+      responses:
+        "200":
+          description: Check-out complete and fee calculated
+        "404":
+          description: Vehicle not found in active parking list
+  /reports/report.php:
+    get:
+      tags:
+      - Reports
+      summary: View Parking Report
+      description: Fetch daily parking transactions.
+      parameters:
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+          example: 2026-10-22
+      responses:
+        "200":
+          description: Report loaded successfully
