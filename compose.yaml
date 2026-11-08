@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    image: group03/pu-parking:week6
+    container_name: pu-parking-app
+    ports:
+      - "${APP_PORT:-8080}:80"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    container_name: pu-parking-db
+    env_file:
+      - .env
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./parking_db_complete.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u root -p$$MYSQL_ROOT_PASSWORD"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+volumes:
+  db-data:
